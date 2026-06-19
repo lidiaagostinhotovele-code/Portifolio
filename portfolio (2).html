@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio | Lidia Tovele </title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --nude:#EDE0D4;--nude2:#D9C4B0;--nude3:#C9A98E;
+  --cream:#F7F0E8;--cream2:#FBF7F2;
+  --coral:#E8604A;--coral2:#C94530;
+  --terr:#B85C38;--saffron:#E8973A;--sage:#7A9E7E;
+  --ink:#1E1612;--ink2:#3D2F28;--muted:#8C7B72;
+  --border:rgba(184,92,56,.15);
+  --nav-h:64px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+::selection{background:var(--coral);color:#fff}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:var(--nude3);border-radius:2px}
+
+/* ════════ NAV ════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;
+  background:rgba(247,240,232,.92);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;font-weight:600;font-style:italic;
+  color:var(--coral);text-decoration:none;
+  display:flex;
+    align-items:center;
+    width:100px;   /* ajuste conforme desejar */
+    height:100px;
+}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;font-weight:500;
+  transition:color .2s;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--coral)}
+
+/* Hambúrguer — só mobile */
+.hamburger{
+  display:none;
+  flex-direction:column;justify-content:center;
+  gap:5px;width:36px;height:36px;cursor:pointer;
+  border:none;background:none;padding:4px;
+}
+.hamburger span{
+  display:block;height:2px;background:var(--ink2);
+  border-radius:2px;transition:transform .3s,opacity .3s;
+}
+
+/* Mobile menu overlay */
+.mobile-menu{
+  display:none;
+  position:fixed;inset:0;z-index:290;
+  background:rgba(247,240,232,.98);
+  backdrop-filter:blur(20px);
+  flex-direction:column;align-items:center;justify-content:center;
+  gap:2.2rem;
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.8rem;font-weight:300;font-style:italic;
+  color:var(--ink2);text-decoration:none;
+  transition:color .2s;
+}
+.mobile-menu a:hover{color:var(--coral)}
+.mobile-menu-close{
+  position:absolute;top:20px;right:5%;
+  font-size:2rem;background:none;border:none;cursor:pointer;
+  color:var(--muted);line-height:1;
+}
+
+/* hamburger animated */
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ════════ HERO ════════ */
+#home{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:0 5%;
+  position:relative;overflow:hidden;
+}
+.hero-bg-letter{
+  position:absolute;top:50%;right:2%;
+  transform:translateY(-50%);
+  font-family:'Cormorant Garamond',serif;
+  font-size:38vw;font-weight:300;
+  color:rgba(184,92,56,.06);
+  line-height:1;pointer-events:none;user-select:none;
+}
+.hero-left{padding:calc(var(--nav-h) + 60px) 0 80px;position:relative;z-index:2}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--coral);color:#fff;
+  font-family:'Space Mono',monospace;
+  font-size:.65rem;letter-spacing:.14em;
+  padding:.35rem .85rem;border-radius:2px;margin-bottom:1.6rem;
+}
+.hero-tag::before{content:'';width:6px;height:6px;background:#fff;border-radius:50%;animation:blink 1.5s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,6vw,6.2rem);
+  font-weight:300;line-height:1.05;
+  color:var(--ink);margin-bottom:1.2rem;
+}
+h1.hero-title em{color:var(--coral);font-style:italic}
+h1.hero-title .line2{display:block;font-weight:600;color:var(--ink2)}
+.hero-desc{
+  font-size:.92rem;color:var(--muted);
+  max-width:380px;line-height:1.8;margin-bottom:2.2rem;
+  border-left:2px solid var(--nude3);padding-left:1rem;
+}
+.hero-actions{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn-main{
+  padding:.85rem 1.8rem;background:var(--coral);
+  color:#fff;border:none;border-radius:2px;
+  font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:500;cursor:pointer;text-decoration:none;
+  display:inline-block;transition:background .2s,transform .15s;
+}
+.btn-main:hover{background:var(--coral2);transform:translateY(-2px)}
+.btn-ghost{
+  padding:.85rem 1.8rem;background:transparent;
+  color:var(--ink2);border:1.5px solid var(--nude3);
+  border-radius:2px;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:500;cursor:pointer;text-decoration:none;
+  display:inline-block;transition:border-color .2s,color .2s;
+}
+.btn-ghost:hover{border-color:var(--coral);color:var(--coral)}
+
+.hero-right{
+  display:flex;align-items:center;justify-content:center;
+  padding:calc(var(--nav-h) + 60px) 0 80px;
+}
+.hero-card{
+  width:min(300px,80%);background:var(--nude);
+  border-radius:6px;overflow:hidden;
+  box-shadow:28px 28px 0 var(--nude2),56px 56px 0 var(--nude3);
+}
+.hero-card-accent{height:4px;background:linear-gradient(90deg,var(--coral),var(--saffron),var(--sage))}
+.hero-card-img{
+  width:100%;height:280px;
+  background:var(--nude2);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:.6rem;
+  color:var(--nude3);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+}
+.hero-card-img svg{opacity:.5;width:48px;height:48px}
+.hero-card-body{padding:1.2rem 1.4rem}
+.hero-card-body h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);margin-bottom:.2rem}
+.hero-card-body p{font-size:.8rem;color:var(--muted)}
+
+/* ════════ SHARED SECTION ════════ */
+.sec-num{font-family:'Cormorant Garamond',serif;font-size:.9rem;color:var(--coral);font-style:italic;margin-bottom:.3rem}
+.section-eyebrow{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);margin-bottom:.55rem}
+h2.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:300;line-height:1.1}
+h2.section-title strong{font-weight:600;font-style:italic}
+
+/* ════════ ABOUT ════════ */
+#about{background:var(--ink);padding:100px 5%;position:relative;overflow:hidden}
+#about::before{
+  content:'sobre';position:absolute;bottom:-3rem;left:-1rem;
+  font-family:'Cormorant Garamond',serif;font-size:20vw;font-weight:300;
+  color:rgba(255,255,255,.03);pointer-events:none;user-select:none;white-space:nowrap;
+}
+.about-header{margin-bottom:3.5rem}
+#about h2.section-title{color:#fff}
+#about h2.section-title strong{color:var(--nude)}
+.about-grid{display:grid;grid-template-columns:280px 1fr;gap:3.5rem;align-items:start}
+
+.about-photo-col{display:flex;flex-direction:column;gap:1.8rem}
+.photo-container{position:relative;width:fit-content}
+.photo-ring{width:220px;height:220px;border-radius:50%;border:1px solid rgba(232,96,74,.4);padding:6px}
+.photo-inner{
+  width:100%;height:100%;border-radius:50%;background:var(--ink2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.5rem;color:var(--nude3);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;
+}
+.photo-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.photo-badge{
+  position:absolute;bottom:8px;right:-12px;
+  background:var(--coral);color:#fff;
+  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.45rem .8rem;border-radius:2px;
+  font-family:'Space Mono',monospace;white-space:nowrap;
+}
+.slogan-block{border-left:2px solid var(--coral);padding:.9rem 1.1rem}
+.slogan-block p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;font-style:italic;color:var(--nude);line-height:1.5}
+.slogan-block cite{display:block;margin-top:.45rem;font-style:normal;font-size:.72rem;color:var(--muted);letter-spacing:.1em}
+
+.bio-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.bio-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:6px;padding:1.3rem 1.5rem;transition:background .2s}
+.bio-card:hover{background:rgba(255,255,255,.07)}
+.bio-card-icon{width:34px;height:34px;border-radius:4px;background:rgba(232,96,74,.15);display:flex;align-items:center;justify-content:center;margin-bottom:.9rem;color:var(--coral)}
+.bio-card h3{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:.6rem}
+.bio-card p,.bio-card li{font-size:.86rem;color:rgba(237,224,212,.65);line-height:1.7}
+.bio-card ul{list-style:none}
+.bio-card ul li::before{content:'— ';color:var(--coral);opacity:.6}
+.bio-wide{grid-column:1/-1}
+.skill{margin-bottom:.8rem}
+.skill-head{display:flex;justify-content:space-between;margin-bottom:.3rem}
+.skill-head span{font-size:.78rem;color:rgba(237,224,212,.6)}
+.skill-head strong{font-size:.78rem;color:var(--nude)}
+.skill-track{height:3px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+.skill-fill{height:100%;background:linear-gradient(90deg,var(--terr),var(--coral),var(--saffron));border-radius:2px}
+.tag-list{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.5rem}
+.tag{font-size:.7rem;padding:.25rem .65rem;border-radius:2px;background:rgba(232,96,74,.12);color:var(--coral);border:1px solid rgba(232,96,74,.2);font-family:'Space Mono',monospace}
+
+/* ════════ PROJECTS ════════ */
+#projects{background:var(--cream2);padding:100px 5%}
+#projects h2.section-title{color:var(--ink)}
+#projects h2.section-title strong{color:var(--coral)}
+.proj-header{margin-bottom:3rem}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+.proj-card{background:#fff;border:1px solid rgba(200,170,150,.2);border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s}
+.proj-card:hover{transform:translateY(-7px);box-shadow:0 20px 44px rgba(184,92,56,.12)}
+.proj-card.featured{grid-column:span 2}
+.proj-thumb{height:190px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.6rem;position:relative;overflow:hidden}
+.proj-card.featured .proj-thumb{height:240px}
+.proj-thumb-icon{font-size:2.2rem}
+.proj-thumb-type{position:absolute;top:10px;left:10px;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;padding:.28rem .65rem;border-radius:2px;color:#fff;background:rgba(0,0,0,.32)}
+.proj-body{padding:1.2rem 1.4rem 1.4rem}
+.proj-body h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;margin-bottom:.35rem;color:var(--ink)}
+.proj-body p{font-size:.83rem;color:var(--muted);line-height:1.65;margin-bottom:.9rem}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.proj-tag{font-size:.62rem;font-family:'Space Mono',monospace;padding:.18rem .55rem;border-radius:2px;background:var(--cream);color:var(--muted);border:1px solid var(--border)}
+.t-coral{background:linear-gradient(135deg,#F5DDD8,#E8AA96)}
+.t-sage{background:linear-gradient(135deg,#D5E5D8,#A8C4AC)}
+.t-saffron{background:linear-gradient(135deg,#F5E8D0,#E8C478)}
+.t-nude{background:linear-gradient(135deg,#EDE0D4,#D9C4B0)}
+.t-terr{background:linear-gradient(135deg,#E8D0C4,#C49078)}
+.t-ink{background:linear-gradient(135deg,#D0CCE0,#A898C8)}
+
+/* ════════ CONTACT ════════ */
+#contact{background:var(--nude);padding:100px 5%;position:relative;overflow:hidden}
+#contact::after{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:var(--coral);clip-path:polygon(15% 0,100% 0,100% 100%,0% 100%);opacity:.05;pointer-events:none}
+#contact h2.section-title{color:var(--ink)}
+#contact h2.section-title strong{color:var(--coral);font-style:italic}
+.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:4.5rem;align-items:start}
+.contact-left p{font-size:.92rem;color:var(--ink2);line-height:1.8;margin:1.2rem 0 1.8rem;opacity:.72}
+.contact-detail{display:flex;align-items:center;gap:.75rem;font-size:.86rem;color:var(--ink2);text-decoration:none;margin-bottom:.8rem;opacity:.75;transition:opacity .2s,color .2s}
+.contact-detail:hover{opacity:1;color:var(--coral)}
+.contact-detail-icon{width:32px;height:32px;border-radius:4px;background:rgba(232,96,74,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--coral)}
+.form{display:flex;flex-direction:column;gap:.85rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.fld{display:flex;flex-direction:column;gap:.3rem}
+.fld label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--coral)}
+.fld input,.fld textarea{background:#fff;border:1.5px solid var(--nude2);border-radius:4px;padding:.78rem .95rem;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--ink);outline:none;resize:none;transition:border-color .2s,box-shadow .2s}
+.fld input:focus,.fld textarea:focus{border-color:var(--coral);box-shadow:0 0 0 3px rgba(232,96,74,.1)}
+.fld input::placeholder,.fld textarea::placeholder{color:var(--muted);opacity:.6}
+.form-actions{display:flex;gap:.85rem;margin-top:.3rem}
+.form-actions .btn-main{flex:1;text-align:center;padding:.9rem}
+.btn-clear{padding:.9rem 1.3rem;background:transparent;border:1.5px solid var(--nude2);border-radius:2px;color:var(--muted);cursor:pointer;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-family:'DM Sans',sans-serif;transition:border-color .2s,color .2s}
+.btn-clear:hover{border-color:var(--coral);color:var(--coral)}
+
+/* ════════ FOOTER ════════ */
+footer{background:var(--ink);padding:2.5rem 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(255,255,255,.05)}
+.footer-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--nude)}
+.footer-copy{font-size:.72rem;color:var(--muted);margin-top:.2rem;font-family:'Space Mono',monospace}
+.socials{display:flex;gap:.65rem}
+.social{width:38px;height:38px;border-radius:4px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;transition:border-color .2s,color .2s,background .2s}
+.social:hover{border-color:var(--coral);color:var(--coral);background:rgba(232,96,74,.08)}
+.social svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* ════════════════════════════
+   RESPONSIVE — Tablet ≤ 960px
+════════════════════════════ */
+@media(max-width:960px){
+  /* Hero: 2 col → 1 col, foto desaparece */
+  #home{grid-template-columns:1fr;min-height:auto;padding-top:0}
+  .hero-left{padding:calc(var(--nav-h)+50px) 0 70px;max-width:560px}
+  .hero-right{display:none}
+  .hero-bg-letter{font-size:55vw;opacity:.5}
+
+  /* About grid → 1 col */
+  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .about-photo-col{flex-direction:row;align-items:center;gap:2rem;flex-wrap:wrap}
+  .slogan-block{flex:1;min-width:200px}
+
+  /* Projects: 3 col → 2 col */
+  .proj-grid{grid-template-columns:1fr 1fr}
+  .proj-card.featured{grid-column:span 2}
+
+  /* Contact: 2 col → 1 col */
+  .contact-grid{grid-template-columns:1fr;gap:2.5rem}
+}
+
+/* ════════════════════════════
+   RESPONSIVE — Mobile ≤ 640px
+════════════════════════════ */
+@media(max-width:640px){
+  :root{--nav-h:58px}
+
+  /* Nav: esconde links, mostra hambúrguer */
+  .nav-links{display:none}
+  .hamburger{display:flex}
+
+  /* Hero */
+  .hero-left{padding:calc(var(--nav-h)+40px) 0 60px}
+  h1.hero-title{font-size:clamp(2.6rem,11vw,3.5rem)}
+  .hero-desc{max-width:100%;font-size:.88rem}
+  .hero-actions{flex-direction:column}
+  .btn-main,.btn-ghost{text-align:center;padding:.85rem 1.2rem}
+
+  /* About */
+  #about{padding:70px 5%}
+  .about-photo-col{flex-direction:column;align-items:flex-start}
+  .photo-ring{width:180px;height:180px}
+  .bio-cards{grid-template-columns:1fr}
+  .bio-wide{grid-column:1/-1}
+
+  /* Projects: 2 col → 1 col */
+  .proj-grid{grid-template-columns:1fr}
+  .proj-card.featured{grid-column:span 1}
+  .proj-card.featured .proj-thumb{height:200px}
+
+  /* Contact */
+  #contact{padding:70px 5%}
+  .frow{grid-template-columns:1fr}
+  .form-actions{flex-direction:column}
+  .form-actions .btn-main,.btn-clear{width:100%;text-align:center}
+
+  /* Footer */
+  footer{flex-direction:column;align-items:flex-start;padding:2rem 5%}
+
+  /* Sections padding */
+  #projects{padding:70px 5%}
+}
+
+/* ════════════════
+   EXTRA SMALL ≤ 380px
+════════════════ */
+@media(max-width:380px){
+  h1.hero-title{font-size:2.4rem}
+  h2.section-title{font-size:2rem}
+  .photo-ring{width:150px;height:150px}
+  nav{padding:0 4%}
+  #about,#projects,#contact{padding:60px 4%}
+}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ════ MOBILE MENU ════ -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Menu de navegação">
+  <button class="mobile-menu-close" onclick="closeMenu()" aria-label="Fechar menu">×</button>
+  <a href="#home"     onclick="closeMenu()">Início</a>
+  <a href="#about"    onclick="closeMenu()">Sobre</a>
+  <a href="#projects" onclick="closeMenu()">Projectos</a>
+  <a href="#contact"  onclick="closeMenu()">Contacto</a>
+</div>
+
+<!-- ════ NAV ════ -->
+<nav>
+  <a href="#home" class="nav-logo"><img src="logot.png" style="height: 100%; width: 100%;object-fit: cover" alt=""></a>
+  <ul class="nav-links">
+    <li><a href="#home">Início</a></li>
+    <li><a href="#about">Sobre</a></li>
+    <li><a href="#projects">Projectos</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section id="home">
+  <div class="hero-bg-letter" aria-hidden="true">S</div>
+  <div class="hero-left">
+    <div class="hero-tag">Disponível para colaborações</div>
+    <h1 class="hero-title">
+      Criativa<em>.</em><br>
+      <span class="line2">Lidia Tovele</span>
+    </h1>
+    <p class="hero-desc">
+      Estudante de Informática · 3.º Ano<br>
+      UTDEG — Multimédia & Computação Gráfica<br>
+      Design, Código & Imaginação.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-main">Ver Projectos</a>
+      <a href="#contact"  class="btn-ghost">Contactar</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-card-accent"></div>
+      <div class="hero-card-img">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="24" cy="18" r="10"/><path d="M8 44c0-8.837 7.163-16 16-16s16 7.163 16 16"/></svg>
+        <span><img src="lili.png" style="height: 100%; width: 100%;object-fit: cover;" alt=""></span>
+      </div>
+      <div class="hero-card-body">
+        <h3>Lidia Tovele </h3>
+        <p>Cybersecurity . Designer · Developer · Criativo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ ABOUT ════ -->
+<section id="about">
+  <div class="about-header">
+    <div class="sec-num"></div>
+    <p class="section-eyebrow">Sobre mim</p>
+    <h2 class="section-title">Quem sou<br><strong>&amp; o que faço</strong></h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-photo-col">
+      <div class="photo-container">
+        <div class="photo-ring">
+          <div class="photo-inner">
+    
+            <svg width="38" height="38" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".45"><circle cx="24" cy="18" r="10"/><path d="M8 44c0-8.837 7.163-16 16-16s16 7.163 16 16"/></svg>
+            <span><img src="amo.jfif" alt=""></span>
+          </div>
+        </div>
+        <div class="photo-badge">3.º Ano · UTDEG</div>
+      </div>
+      <div class="slogan-block">
+        <p>"A tecnologia é a tela, a criatividade é o pincel."</p>
+        <cite>— Lidia Rafica</cite>
+      </div>
+    </div>
+    <div class="bio-cards">
+      <div class="bio-card">
+        <div class="bio-card-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Filiação</h3>
+        <p>Natural de Maputo, Moçambique. Cresci com uma curiosidade inata pelo mundo digital e pela criatividade. Acredito que aprender é um processo contínuo — e é essa mentalidade que levo para tudo o que faço.</p>
+      </div>
+      <div class="bio-card">
+        <div class="bio-card-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <h3>Formação</h3>
+        <ul>
+          <li>Lic. Informática — UTDEG (em curso)</li>
+         
+        </ul>
+      </div>
+      <div class="bio-card">
+        <div class="bio-card-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>Skills de IT</h3>
+        <div class="skill" style="margin-top:.3rem">
+          <div class="skill-head"><span>HTML &amp; CSS</span><strong>85%</strong></div>
+          <div class="skill-track"><div class="skill-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-head"><span>JavaScript</span><strong>70%</strong></div>
+          <div class="skill-track"><div class="skill-fill" style="width:70%"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-head"><span>Cybersecurity</span><strong>90%</strong></div>
+          <div class="skill-track"><div class="skill-fill" style="width:80%"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-head"><span>3D &amp; Animação</span><strong>60%</strong></div>
+          <div class="skill-track"><div class="skill-fill" style="width:60%"></div></div>
+        </div>
+      </div>
+      <div class="bio-card">
+        <div class="bio-card-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <h3>Idiomas</h3>
+        <ul>
+          <li>Português — Nativo</li>
+          <li>Inglês — Intermédio</li>
+          <li>Espanhol — Intermédio </li>
+        </ul>
+      </div>
+      <div class="bio-card bio-wide">
+        <h3>Interesses &amp; Paixões</h3>
+        <div class="tag-list">
+          <span class="tag">Cybersecurity</span><span class="tag">Developer</span>
+          <span class="tag">Edição de Vídeo</span><span class="tag">Dev Web</span>
+          <span class="tag">Inteligência Artificial</span><span class="tag">Animação 3D</span>
+          <span class="tag">UX/UI</span><span class="tag">Música</span><span class="tag">Network</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PROJECTS ════ -->
+<section id="projects">
+  <div class="proj-header">
+    <div class="sec-num"></div>
+    <p class="section-eyebrow"></p>
+    <h2 class="section-title">Projectos <strong>em destaque</strong></h2>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-body">
+      <div class="proj-thumb t-coral">
+        <div class="proj-thumb-type">Design Gráfico</div>
+        <span class="proj-thumb-icon"><img src="Elegant Panflet for Dia da Mulher Moçambicana.png" style="height: 100%; width: 100%;object-fit: cover;"alt=""></span>
+      </div>
+      <div class="proj-body">
+        <h3>Cartaz Publicitário</h3>
+        <p>Cartaz criado com Canva  para evento alusivo ao 7 de abril , explorando tipografia editorial, composição visual e hierarquia de cor.</p>
+        <div class="proj-tags"><span class="proj-tag">Canva</span><span class="proj-tag">Tipografia</span><span class="proj-tag">Print Design</span><span class="proj-tag"><a href="Elegant Panflet for Dia da Mulher Moçambicana.png" target="_blank">View </a></span></div>
+      </div>
+    </div>
+   <div class="proj-card">
+  <div class="proj-thumb" style="padding:0;overflow:hidden;background:#1C1C28;">
+    <div class="proj-thumb-type">Modelagem 3D</div>
+    
+    <!-- Carregar a biblioteca model-viewer -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    
+    <model-viewer
+      src="copo.glb"
+      alt="Modelo 3D no Blender"
+      auto-rotate
+      camera-controls
+      style="width:100%;height:190px;background:transparent;"
+    ></model-viewer>
+  </div>
+  <div class="proj-body">
+    <h3>Modelo 3D Interactivo</h3>
+    <p>Objecto modelado no Blender com texturização PBR — rode e explore o modelo directamente no browser.</p>
+    <div class="proj-tags">
+      <span class="proj-tag">Blender</span>
+      <span class="proj-tag">GLB</span>
+      <span class="proj-tag">PBR</span>
+      <span class="proj-tag">3D Interactivo</span>
+    </div>
+  </div>
+</div>
+    <div class="proj-card">
+      <div class="proj-thumb t-saffron">
+        <div class="proj-thumb-type">Motion</div>
+        <span class="proj-thumb-icon"><video src="WhatsApp Video 2026-06-18 at 8.01.02 PM.mp4" style="height: 100%; width: 100%;object-fit: cover";></video></span>
+      </div>
+      <div class="proj-body">
+        <h3>Vídeo Promocional</h3>
+        <p>Produção completa do vídeo com HeyGen, incluindo criação de avatar digital, sincronização labial, integração de voz original e composição audiovisual.</p>
+        <div class="proj-tags"><span class="proj-tag">Premiere</span><span class="proj-tag">Motion</span><span class="proj-tag">Sound</span><span class="proj-tag"><a href="WhatsApp Video 2026-06-18 at 8.01.02 PM.mp4" target="_blank">View </a></span></div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-thumb t-sage">
+        <div class="proj-thumb-type">Animação</div>
+        <span class="proj-thumb-icon"><video src="borboleta end.mp4" style="height: 100%; width: 100%;object-fit: cover" ></video></span>
+      </div>
+      <div class="proj-body">
+        <h3>Animação 2D</h3>
+        <p>Sequência animada frame-a-frame com narrativa visual e timing expressivo.</p>
+        <div class="proj-tags"><span class="proj-tag">After Effects</span><span class="proj-tag">Keyframe</span><span class="proj-tag">Narrativa</span><span class="proj-tag"><a href="borboleta end.mp4" target="_blank">View </a></span></div>
+      </div>
+    </div>
+ <div class="proj-card">
+  <div class="proj-thumb" style="padding:0;overflow:hidden;">
+    <div class="proj-thumb-type">Modelagem 3D</div>
+    <img 
+      src="copo.png" 
+      alt="Copo com pega e vapor de água — projecto Blender"
+      style="width:100%;height:100%;object-fit:cover;"
+    >
+  </div>
+  <div class="proj-body">
+    <h3>Copo com Vapor de Água</h3>
+    <p>Modelagem e renderização 3D de um copo com pega, com simulação de vapor de água e iluminação realista de estúdio.</p>
+    <div class="proj-tags">
+      <span class="proj-tag">Blender</span>
+      <span class="proj-tag">Modelagem 3D</span>
+      <span class="proj-tag">Renderização</span>
+      <span class="proj-tag">Iluminação</span>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<!-- ════ CONTACT ════ -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-left">
+      <div class="sec-num"></div>
+      <p class="section-eyebrow">Contacto</p>
+      <h2 class="section-title">Vamos<br><strong>conversar</strong></h2>
+      <p>Tem um projecto em mente ou quer entrar em contacto? Estou sempre aberto a novas colaborações e oportunidades criativas.</p>
+      <a href="mailto:seuemail@exemplo.com" class="contact-detail">
+        <div class="contact-detail-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div>
+        lidiatovele@gmail.com
+      </a>
+      <a href="tel:+258800000000" class="contact-detail">
+        <div class="contact-detail-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.08 5.18 2 2 0 015.1 3h3a2 2 0 012 1.72c.13 1 .4 1.97.72 2.9a2 2 0 01-.45 2.11L9.09 10.91A16 16 0 0013.09 14.91l1.18-1.18a2 2 0 012.11-.45c.93.32 1.9.59 2.9.72A2 2 0 0122 16.92z"/></svg></div>
+        +258 870222512
+      </a>
+      <a href="#" class="contact-detail">
+        <div class="contact-detail-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        Maputo, Moçambique
+      </a>
+    </div>
+    <div class="contact-right">
+      <div class="form">
+        <div class="frow">
+          <div class="fld"><label>Nome</label><input type="text" placeholder="Seu nome completo" id="f-nome"></div>
+          <div class="fld"><label>E-mail</label><input type="email" placeholder="email@exemplo.com" id="f-email"></div>
+        </div>
+        <div class="fld"><label>Assunto</label><input type="text" placeholder="Assunto da mensagem" id="f-assunto"></div>
+        <div class="fld"><label>Mensagem</label><textarea rows="5" placeholder="Escreva aqui a sua mensagem…" id="f-msg"></textarea></div>
+        <div class="form-actions">
+          <button class="btn-main" onclick="submitForm()">Enviar Mensagem</button>
+          <button class="btn-clear" onclick="clearForm()">Limpar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div>
+    <div class="footer-name"> Lidia Tovele</div>
+    <div class="footer-copy">© Copyright 2026 · Todos os direitos reservados</div>
+  </div>
+  <div class="socials">
+    <a href="#" class="social" title="LinkedIn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    </a>
+    <a href="#" class="social" title="GitHub" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+    </a>
+    <a href="#" class="social" title="Instagram" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+    <a href="#" class="social" title="Facebook" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+/* ── Menu hambúrguer ── */
+const burger=document.getElementById('hamburger');
+const mMenu=document.getElementById('mobile-menu');
+function toggleMenu(){
+  const open=mMenu.classList.toggle('open');
+  burger.classList.toggle('open',open);
+  burger.setAttribute('aria-expanded',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+function closeMenu(){
+  mMenu.classList.remove('open');
+  burger.classList.remove('open');
+  burger.setAttribute('aria-expanded','false');
+  document.body.style.overflow='';
+}
+// fechar ao clicar fora
+mMenu.addEventListener('click',e=>{if(e.target===mMenu)closeMenu()});
+
+/* ── Formulário ── */
+function submitForm(){
+  const n=document.getElementById('f-nome').value.trim();
+  const e=document.getElementById('f-email').value.trim();
+  if(!n||!e){alert('Por favor, preencha pelo menos o nome e o e-mail.');return;}
+  alert('✓ Mensagem enviada! Obrigado, '+n+'.');
+  clearForm();
+}
+function clearForm(){
+  ['f-nome','f-email','f-assunto','f-msg'].forEach(id=>document.getElementById(id).value='');
+}
+
+/* ── Active nav link no scroll ── */
+const secs=document.querySelectorAll('section[id]');
+const navAs=document.querySelectorAll('.nav-links a');
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navAs.forEach(a=>{
+        a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);
+      });
+    }
+  });
+},{threshold:.35});
+secs.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
