@@ -17,7 +17,11 @@
   --nav-h:64px;
 }
 html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+body{
+  background:var(--cream);
+  color:var(--ink);font-family:'DM Sans',sans-serif;
+  overflow-x:hidden
+}
 ::selection{background:var(--coral);color:#fff}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:var(--cream)}
@@ -225,7 +229,36 @@ h2.section-title strong{font-weight:600;font-style:italic}
 .skill-fill{height:100%;background:linear-gradient(90deg,var(--terr),var(--coral),var(--saffron));border-radius:2px}
 .tag-list{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.5rem}
 .tag{font-size:.7rem;padding:.25rem .65rem;border-radius:2px;background:rgba(232,96,74,.12);color:var(--coral);border:1px solid rgba(232,96,74,.2);font-family:'Space Mono',monospace}
+.typewriter {
+  display: inline-block;
+  min-height: 1.1em;
+  white-space: nowrap;
+  padding-right: 0.16em;
+  border-right: 2px solid var(--coral);
+  color: var(--coral);
+  text-shadow: 0 14px 28px rgba(184, 92, 56, 0.15);
+  animation: cursorBlink 0.95s steps(1) infinite;
+}
 
+@keyframes cursorBlink {
+  0%, 100% {
+    border-color: var(--coral);
+  }
+
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes cursorBlink {
+  0%, 100% {
+    border-color: var(--coral);
+  }
+
+  50% {
+    border-color: transparent;
+  }
+}
 /* ════════ PROJECTS ════════ */
 #projects{background:var(--cream2);padding:100px 5%}
 #projects h2.section-title{color:var(--ink)}
@@ -391,10 +424,15 @@ footer{background:var(--ink);padding:2.5rem 5%;display:flex;align-items:center;j
   <div class="hero-bg-letter" aria-hidden="true">S</div>
   <div class="hero-left">
     <div class="hero-tag">Disponível para colaborações</div>
-    <h1 class="hero-title">
-      Criativa<em>.</em><br>
-      <span class="line2">Lidia Tovele</span>
-    </h1>
+     <h1 class="hero-title">
+                <span class="hero-title">Criativa<em>.</em><br></span>
+                <span
+                  class="typewriter"
+                  data-text="Lidia Rafica"
+                  aria-label="Lidia Rafica"
+                ></span>
+              </h1>
+
     <p class="hero-desc">
       Estudante de Informática · 3.º Ano<br>
       UTDEG — Multimédia & Computação Gráfica<br>
@@ -688,6 +726,51 @@ function submitForm(){
 }
 function clearForm(){
   ['f-nome','f-email','f-assunto','f-msg'].forEach(id=>document.getElementById(id).value='');
+}
+
+/* TYPEWRITER*/
+/* TYPEWRITER */
+const typewriterTarget = document.querySelector(".typewriter");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (typewriterTarget) {
+  const fullText = typewriterTarget.dataset.text || "";
+
+  if (prefersReducedMotion) {
+    typewriterTarget.textContent = fullText;
+  } else {
+    let index = 0;
+    let isDeleting = false;
+
+    const runTypewriter = () => {
+      typewriterTarget.textContent = fullText.slice(0, index);
+
+      if (!isDeleting && index < fullText.length) {
+        index++;
+        window.setTimeout(runTypewriter, 90);
+        return;
+      }
+
+      if (!isDeleting && index === fullText.length) {
+        isDeleting = true;
+        window.setTimeout(runTypewriter, 1400);
+        return;
+      }
+
+      if (isDeleting && index > 0) {
+        index--;
+        window.setTimeout(runTypewriter, 55);
+        return;
+      }
+
+      if (isDeleting && index === 0) {
+        isDeleting = false;
+        window.setTimeout(runTypewriter, 350);
+      }
+    };
+
+    window.setTimeout(runTypewriter, 360);
+  }
 }
 
 /* ── Active nav link no scroll ── */
